@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </head>
   <body>
     <?= validation_errors(); ?>
-    <?= form_open("Welcome/registrar/true")?>
+    <?= form_open("Personas/registrar/true")?>
 
 
     <label for="tipo_documento">Tipo documento</label>
