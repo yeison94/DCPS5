@@ -7,6 +7,7 @@ CREATE TABLE persona (
 	fecha_nacimiento DATE         NOT NULL,
 	nacionalidad     VARCHAR(50)  NOT NULL,
 	direccion        VARCHAR(40)  NOT NULL,
+	telefono         INT(50)  	  NOT NULL,
 	ciudad           VARCHAR(50)  NOT NULL,
 	email            VARCHAR(50)  NOT NULL,
 	PRIMARY KEY (numero_documento),
@@ -44,6 +45,6 @@ CREATE TABLE posgrado (
 	nivel   VARCHAR(15)  NOT NULL,
 	PRIMARY KEY (estudio),
 	CONSTRAINT padre_posgrado FOREIGN KEY (estudio) REFERENCES estudio (id),
-	CONSTRAINT tipo_posgrado_valido CHECK 
+	CONSTRAINT tipo_posgrado_valido CHECK
 		(area IN ('Especialización', 'Maestría', 'Doctorado', 'Posdoctorado'))
 ) ENGINE = InnoDB;
