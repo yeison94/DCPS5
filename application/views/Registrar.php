@@ -10,63 +10,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <body>
     <?= validation_errors(); ?>
     <?= form_open("Welcome/registrar/true")?>
-    <?= form_label('Tipo documento','')?>
-    <?php
-    $data = array('name'=> 'tipo_documento');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Numero documento','')?>
-    <?php
-    $data = array('name'=> 'numero_documento');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Nombre','')?>
-    <?php
-    $data = array('name'=> 'nombre');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Apellido','')?>
-    <?php
-    $data = array('name'=> 'apellido');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Sexo','')?>
-    <?php
-    $data = array('name'=> 'sexo');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Fecha nacimiento','')?>
-    <?php
-    $data = array('name'=> 'fecha_nacimiento');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Direccion','')?>
-    <?php
-    $data = array('name'=> 'direccion');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Ciudad','')?>
-    <?php
-    $data = array('name'=> 'ciudad');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Email','')?>
-    <?php
-    $data = array('name'=> 'email');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Telefono','')?>
-    <?php
-    $data = array('name'=> 'telefono');
-    echo form_input($data);?>
-    <br>
-    <?= form_label('Nacionalidad','')?>
-    <?php
-    $data = array('name'=> 'nacionalidad');
-    echo form_input($data);?>
-   <br>
-   <br>
-    <?= form_submit("registrar","Registrar"); ?><br>
-   <?= form_close()?>
+
+
+    <label for="tipo_documento">Tipo documento</label>
+    <input type="input" name="tipo_documento" /><br />
+
+    <label for="numero_documento">Numero documento</label>
+    <input type="input" name="numero_documento" /><br />
+    
+    <label for="nombre">Nombre</label>
+    <input type="input" name="nombre" /><br />
+
+    <label for="apellido">Apellido</label>
+    <input type="input" name="apellido" /><br />
+
+    <label for="sexo">Sexo</label>
+    <input type="input" name="sexo" /><br />
+
+    <label for="fecha_nacimiento">Fecha nacimiento</label>
+    <input type="input" name="fecha_nacimiento" /><br />
+
+    <label for="direccion">Direccion</label>
+    <input type="input" name="direccion" /><br />
+
+    <label for="ciudad">Ciudad</label>
+    <input type="input" name="ciudad" /><br />
+
+    <label for="email">Email</label>
+    <input type="input" name="email" /><br />
+
+    <label for="telefono">Telefono</label>
+    <input type="input" name="telefono" /><br />
+
+    <label for="nacionalidad">Nacionalidad</label>
+    <input type="input" name="nacionalidad" /><br />
+
+   <input type="submit" name="registrar" value="Registrar" />
+
+  <?= form_close()?>
+
   </body>
 </html>
