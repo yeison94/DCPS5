@@ -155,6 +155,7 @@ class Persona extends CI_Model {
 			$this->telefono = $result[0]->telefono;
 			return $this;
 		}
+		//return $this->numero_documento;
 	}
 
 
@@ -162,6 +163,7 @@ class Persona extends CI_Model {
 		$this->load->model('Estudio');
 
 		return $this->estudios = $this->Estudio->obtener_estudios_por_persona($this);
+	    //return $this->Estudio->obtener_estudios_por_persona($this);
 	}
 
 

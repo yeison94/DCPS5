@@ -85,9 +85,17 @@ class Personas extends CI_Controller {
  public function listar_detalle($cedula = null){
    $this->load->model('Persona');
    if($cedula != null){
-     $value['numero_documento'] = $cedula;
+      $value['numero_documento'] = $cedula;
       $peop = new Persona($value);
-      $peop->obtener_datos();
+      $peop->obtener_datos();  
+	  $data['persona'] = $peop;
+	  $datos = $peop->obtener_estudios();
+	   settype($datos, 'array');
+	  $data['estudios'] =$datos;
+	  //var_dump($datos);
+	  $this->load->view('Listar_detalle',$data);
+
+	  //var_dump($peop->obtener_estudios());
    }
  }
 
