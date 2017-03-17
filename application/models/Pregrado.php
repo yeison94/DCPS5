@@ -22,6 +22,17 @@ class Pregrado extends Estudio {
 		}
 	}
 
+	public function __get($key){
+		switch ($key) {
+			case 'profesion':
+			case 'tarjeta_profesional':
+			return $this->$key;
+			default:
+			return parent::__get($key);
+		}
+
+	}
+
 	public function validar($persona) {
 		$errores = parent::validar($persona);
 		if (!is_array($errores))

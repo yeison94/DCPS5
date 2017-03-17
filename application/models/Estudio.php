@@ -80,6 +80,7 @@ class Estudio extends CI_Model {
 
 		$pregrados = [];
 		$posgrados = [];
+		$estudios = [];
 
 		$this->db->from('estudio')
 			->join('pregrado', 'estudio.id = pregrado.estudio')
@@ -88,10 +89,12 @@ class Estudio extends CI_Model {
 		$pregrados = $this->db->get()->result();
 
 		foreach ($pregrados as $pregrado) {
-			array_push($pregrados,new Pregrado($pregrado));
-			//$estudios = new Pregrado($pregrado);
+		//	array_push($pregrados,new Pregrado($pregrado));
+			$estudios[] = new Pregrado($pregrado);
+			
 		}
-
+		// var_dump($estudios);
+			
 		$this->db->from('estudio')
 			->join('posgrado', 'estudio.id = posgrado.estudio')
 			->where('persona', $persona->numero_documento);
@@ -102,7 +105,7 @@ class Estudio extends CI_Model {
 			array_push($posgrados,new Posgrado($posgrado));
 			//$estudios = new Posgrado($posgrado);
 		}
-        $estudios = ['pregrados'=>$pregrados,'posgrados'=>$posgrados];
+        //$estudios = ['pregrados'=>$pregrados,'posgrados'=>$posgrados];
 		//array_push($estudios,$pregrados,$posgrados);
 
 		return $estudios;

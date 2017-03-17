@@ -55,16 +55,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</tr>
 					<tr>
 						<td><?php  
-						foreach ($estudios['pregrados'] as $estudio) {
-							settype($estudio, 'array');
-							echo "<ul>";
-							foreach ($estudio as $key => $value) {
-								if($key == "profesion"){?>
-								<li><?=$value?></li>
-								<a onclick="if(confirma() == false) return false" href="<?=base_url()?>/index.php/personas">Eliminar</a>
-							<?php }
-							}
-							echo "</ul>";}?>
+
+							//var_dump ($estudios['pregrados']);
+
+						foreach ($estudios as $estudio) {
+
+								echo $estudio->profesion;
+								echo $estudio->institucion;
+						
+							}?>
 						</td>
 
 						<td><?php  

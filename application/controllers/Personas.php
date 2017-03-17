@@ -88,9 +88,9 @@ class Personas extends CI_Controller {
       $peop = new Persona($value);
       $peop->obtener_datos();  
 	  $data['persona'] = $peop;
-	  $datos = $peop->obtener_estudios();
-	   settype($datos, 'array');
-	  $data['estudios'] =$datos;
+	  $estudios = $peop->obtener_estudios();
+	  var_dump($estudios);
+	  $data['estudios'] =$estudios;
 	  //var_dump($datos);
 	  $this->load->view('listar_detalle',$data);
 

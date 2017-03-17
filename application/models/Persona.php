@@ -180,7 +180,9 @@ class Persona extends CI_Model {
 	public function obtener_estudios() {
 		$this->load->model('Estudio');
 
-		return $this->estudios = $this->Estudio->obtener_estudios_por_persona($this);
+		$this->estudios = $this->Estudio->obtener_estudios_por_persona($this);
+
+		return $this->estudios;
 	    //return $this->Estudio->obtener_estudios_por_persona($this);
 	}
 
