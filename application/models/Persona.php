@@ -177,4 +177,5 @@ class Persona extends CI_Model {
 		}
 		return $result;
 	}
+	
 }

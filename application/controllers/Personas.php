@@ -99,6 +99,65 @@ class Personas extends CI_Controller {
    }
  }
 
+ public function agregar_pregrado($cedula = null,$opcion = null){
+   $this->load->model('Pregrado');
+   $this->load->model('Persona');
+   $this->load->model('Estudio');
+   if($cedula != null && $opcion != null){
+	   $this->form_validation->set_rules('institucion', 'institucion', 'required');
+		$this->form_validation->set_rules('pais', 'pais', 'required');
+		$this->form_validation->set_rules('fecha_graduacion', 'fecha_graduacion', 'required');
+		$this->form_validation->set_rules('profesion', 'profesion', 'required');
+		
+		if ($this->form_validation->run() == FALSE)
+		{
+			$data['cedula'] = $cedula;
+	        $this->load->view('Agregar_pregrado',$data);
+						//$this->load->view('Registrar');
+		}
+		else
+		{
+			// $value['tipo_documento'] = $this->input->post('tipo_documento');
+			// $value['numero_documento'] = $this->input->post('numero_documento');
+			// $value['nombre'] = $this->input->post('nombre');
+			// $value['apellido'] = $this->input->post('apellido');
+			// $value['sexo'] = $this->input->post('sexo');
+			// $value['fecha_nacimiento'] = $this->input->post('fecha_nacimiento');
+			// $value['direccion'] = $this->input->post('direccion');
+			// $value['ciudad'] = $this->input->post('ciudad');
+			// $value['email'] = $this->input->post('email');
+			// $value['telefono'] = $this->input->post('telefono');
+			// $value['nacionalidad'] = $this->input->post('nacionalidad');
+            $value['institucion'] = $this->input->post('institucion');
+			$value['pais'] = $this->input->post('pais');
+			$value['fecha_graduacion'] = $this->input->post('fecha_graduacion');
+			$value['profesion'] = $this->input->post('profesion');
+            $value['numero_documento'] = $cedula;
+           
+			$pregrado = new Pregrado($value);
+			$persona = new Persona($value);
+			$resultado = $pregrado->registrar($persona);
+			if($resultado == TRUE){
+             echo "INSERTADO";
+			}else{
+             echo "NO INSERTADO";
+			}
+			//$people->registrar();
+
+			//$this->load->view('Menu');
+			
+
+		}
+
+   }elseif ($cedula != null && $opcion == null) {
+	$data['cedula'] = $cedula;
+	$this->load->view('Agregar_pregrado',$data);
+    //  $value['numero_documento'] = $cedula;
+    //   $peop = new Persona($value);
+    //   $peop->obtener_datos();
+   }
+ }
+
  public function editar_pregrado($cedula = null){
    $this->load->model('Persona');
    if($cedula != null){
