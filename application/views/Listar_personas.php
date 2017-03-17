@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="<?php echo site_url("personas/agregar_pregrado/").$nueva->numero_documento?>">
             <button type="button" name="button">Añadir pregrado</button>
             </a>
-            <a href="<?php echo "http://localhost/DCPS5/index.php/Welcome/listar_detalle/".$nueva->numero_documento?>">
+            <a href="<?php echo site_url("personas/agregar_posgrado/").$nueva->numero_documento?>">
             <button type="button" name="button">Añadir posgrado</button>
             </a>
             <a href="<?php echo site_url("personas/modificar/").$nueva->numero_documento?>">
