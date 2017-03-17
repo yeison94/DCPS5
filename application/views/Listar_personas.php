@@ -52,6 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="<?php echo "http://localhost/DCPS5/index.php/Welcome/listar_detalle/".$nueva->numero_documento?>">
             <button type="button" name="button">Añadir posgrado</button>
             </a>
+            <a href="<?php echo site_url("personas/modificar/").$nueva->numero_documento?>">
+            <button type="button" name="button">Modificar</button></a>
         </td><tr>
         <?php  } ?>
           </tr>

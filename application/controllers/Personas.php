@@ -64,7 +64,6 @@ class Personas extends CI_Controller {
 			$people->registrar();
 
 			$this->load->view('Menu');
-
 		}
 	 }
  }
@@ -166,5 +165,68 @@ class Personas extends CI_Controller {
       $peop->obtener_datos();
    }
  }
+
+
+public function modificar($numero_documento = null, $modificacion = null){
+	 $this->load->model('Persona');
+
+	if($numero_documento != null) {
+
+	 $this->load->model('Persona');
+	 $persona = $this->Persona->obtener_persona($numero_documento);
+
+	 $data["persona"] = $persona;
+
+	 if($modificacion == NULL){
+	 	$this->load->view('modificar_persona',$data);
+	 }else{
+		 
+			$this->form_validation->set_rules('tipo_documento', 'Tipo documento', 'required');
+			$this->form_validation->set_rules('numero_documento', 'Numero documento', 'required');
+			$this->form_validation->set_rules('nombre', 'Nombre', 'required');
+			$this->form_validation->set_rules('apellido', 'Apellido', 'required');
+			$this->form_validation->set_rules('sexo', 'Sexo', 'required');
+			$this->form_validation->set_rules('fecha_nacimiento', 'Fecha nacimiento', 'required');
+			$this->form_validation->set_rules('ciudad', 'Ciudad', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('telefono', 'Telefono', 'required');
+			$this->form_validation->set_rules('nacionalidad', 'Nacionalidad', 'required');			
+			
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->load->view('modificar_persona',$data);
+		}
+		else
+		{
+			$value['tipo_documento'] = $this->input->post('tipo_documento');
+			$value['numero_documento'] = $this->input->post('numero_documento');
+			$value['nombre'] = $this->input->post('nombre');
+			$value['apellido'] = $this->input->post('apellido');
+			$value['sexo'] = $this->input->post('sexo');
+			$value['fecha_nacimiento'] = $this->input->post('fecha_nacimiento');
+			$value['direccion'] = $this->input->post('direccion');
+			$value['ciudad'] = $this->input->post('ciudad');
+			$value['email'] = $this->input->post('email');
+			$value['telefono'] = $this->input->post('telefono');
+			$value['nacionalidad'] = $this->input->post('nacionalidad');
+
+			//$this->Persona->construc($value);
+			$people = new Persona($value);
+			if ($people->actualizar()){
+				$data["persona"] = $value;
+				$this->load->view('modificar_persona',$data);
+				echo "Modificado exitosamente";
+			}
+		}
+	 }
+
+ 	}
+	else {
+		redirect('/personas/listar_personas');
+	 }
+
+
+ }
+
 
 }
