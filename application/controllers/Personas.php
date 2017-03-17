@@ -166,6 +166,11 @@ class Personas extends CI_Controller {
    }
  }
 
+ public function eliminar_pregrado($pregra = null){
+	 if($pregra != NULL){
+		 echo $pregra;
+	 }
+ }
 
 public function modificar($numero_documento = null, $modificacion = null){
 	 $this->load->model('Persona');

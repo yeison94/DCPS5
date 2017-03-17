@@ -6,6 +6,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <head>
     <meta charset="utf-8">
     <title></title>
+	<script type="text/javascript">
+		function confirma(){
+			if (confirm("¿Realmente desea eliminarlo?"))
+			{ 
+				alert("A Cristian le gusta eliminar estudios, se inteligente, no seas como Cristian."); 
+			}
+				else { 
+				return false
+			    }
+		}
+	</script>
   </head>
   <body>
 	<table>
@@ -71,10 +82,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					 settype($estudio, 'array');
 					 echo "<ul>";
 					 foreach ($estudio as $key => $value) {
-						 if($key == "profesion"){
-								echo"<li>$value</li>";
-						 }
-						 
+						 if($key == "profesion"){?>
+						 <li><?=$value?></li>
+						 <a onclick="if(confirma() == false) return false" href="<?=base_url()?>/index.php/personas/eliminar_pregrado/<?=$value?>">Eliminar</a>
+						<?php }
 					 }
 					 echo "</ul>";
 				 }
@@ -89,7 +100,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						 if($key == "area"){
 								echo"<li>$value</li>";
 						 }
-						 
 					 }
 					 echo "</ul>";
 				 }
