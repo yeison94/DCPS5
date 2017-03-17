@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title></title>
 	<script type="text/javascript">
 		function confirma(){
-			if (confirm("¿Realmente desea eliminarlo?"))
+			if (confirm("¿Enserio desea eliminar el estudio?"))
 			{ 
 				alert("A Cristian le gusta eliminar estudios, se inteligente, no seas como Cristian."); 
 			}
@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					 foreach ($estudio as $key => $value) {
 						 if($key == "profesion"){?>
 						 <li><?=$value?></li>
-						 <a onclick="if(confirma() == false) return false" href="<?=base_url()?>/index.php/personas/eliminar_pregrado/<?=$value?>">Eliminar</a>
+						 <a onclick="if(confirma() == false) return false" href="<?=base_url()?>/index.php/personas">Eliminar</a>
 						<?php }
 					 }
 					 echo "</ul>";
