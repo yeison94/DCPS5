@@ -157,6 +157,47 @@ class Personas extends CI_Controller {
    }
  }
 
+ public function agregar_posgrado($cedula = null,$opcion = null){
+   $this->load->model('Posgrado');
+   $this->load->model('Persona');
+   $this->load->model('Estudio');
+   if($cedula != null && $opcion != null){
+	   $this->form_validation->set_rules('institucion', 'institucion', 'required');
+		$this->form_validation->set_rules('pais', 'pais', 'required');
+		$this->form_validation->set_rules('fecha_graduacion', 'fecha_graduacion', 'required');
+		$this->form_validation->set_rules('area', 'area', 'required');
+		$this->form_validation->set_rules('nivel', 'nivel', 'required');
+		
+		if ($this->form_validation->run() == FALSE)
+		{
+			$data['cedula'] = $cedula;
+	        $this->load->view('Agregar_posgrado',$data);
+		}
+		else
+		{
+            $value['institucion'] = $this->input->post('institucion');
+			$value['pais'] = $this->input->post('pais');
+			$value['fecha_graduacion'] = $this->input->post('fecha_graduacion');
+			$value['area'] = $this->input->post('area');
+			$value['nivel'] = $this->input->post('nivel');
+            $value['numero_documento'] = $cedula;
+           
+			$posgrado = new Posgrado($value);
+			$persona = new Persona($value);
+			$resultado = $posgrado->registrar($persona);
+			if($resultado == TRUE){
+             echo "INSERTADO";
+			}else{
+             echo "NO INSERTADO";
+			}
+		}
+
+   }elseif ($cedula != null && $opcion == null) {
+	$data['cedula'] = $cedula;
+	$this->load->view('Agregar_posgrado',$data);
+ }
+}
+
  public function editar_pregrado($cedula = null){
    $this->load->model('Persona');
    if($cedula != null){
