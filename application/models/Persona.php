@@ -136,6 +136,24 @@ class Persona extends CI_Model {
 		return $this->db->insert('persona', $data);
 	}
 
+	public function actualizar() {
+		$data = [
+			'tipo_documento' => $this->tipo_documento,
+			'numero_documento' => $this->numero_documento,
+			'nombre' => $this->nombre,
+			'apellido' => $this->apellido,
+			'sexo' => $this->sexo,
+			'fecha_nacimiento' => $this->fecha_nacimiento,
+			'direccion' => $this->direccion,
+			'ciudad' => $this->ciudad,
+			'nacionalidad' => $this->nacionalidad,
+			'email' => $this->email,
+			'telefono' => $this->telefono
+		];
+
+		return $this->db->update('persona', $data, array('numero_documento' => $this->numero_documento));
+	}
+
 	public function obtener_datos() {
 		$query = $this->db->get_where('persona', ['numero_documento' => $this->numero_documento]);
 		$result = $query->result();
@@ -176,5 +194,11 @@ class Persona extends CI_Model {
 			$result[$key] = new Persona($persona);
 		}
 		return $result;
+	}
+
+	public function obtener_persona($numero_documento) {
+
+        $query = $this->db->get_where('persona', array('numero_documento' => $numero_documento));
+        return $query->row_array();
 	}
 }
