@@ -12,7 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 <?= validation_errors(); ?>
     <?= form_open("Personas/agregar_posgrado/".$cedula."/agregar")?>
 
-
     <label for="institucion">Institución</label>
     <input type="input" name="institucion" /><br/>
 

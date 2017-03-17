@@ -21,13 +21,13 @@ class Personas extends CI_Controller {
  }
 
  public function index(){
-	 $this->load->view('Menu');
+	 $this->load->view('menu');
  }
 
  public function registrar($registro = null){
 	 $this->load->model('Persona');
 	 if($registro == NULL){
-		 $this->load->view('Registrar');
+		 $this->load->view('registrar');
 	 }else{
 		 
 			$this->form_validation->set_rules('tipo_documento', 'Tipo documento', 'required');
@@ -63,7 +63,7 @@ class Personas extends CI_Controller {
 			$people = new Persona($value);
 			$people->registrar();
 
-			$this->load->view('Menu');
+			$this->load->view('menu');
 		}
 	 }
  }
@@ -78,7 +78,7 @@ class Personas extends CI_Controller {
   	$result[$indice] =  $resu[$i];
   }
 	$result['cantidad'] = $cantidad_personas;
-	 $this->load->view('Listar_personas',$result);
+	 $this->load->view('listar_personas',$result);
  }
 
  public function listar_detalle($cedula = null){
@@ -92,7 +92,7 @@ class Personas extends CI_Controller {
 	   settype($datos, 'array');
 	  $data['estudios'] =$datos;
 	  //var_dump($datos);
-	  $this->load->view('Listar_detalle',$data);
+	  $this->load->view('listar_detalle',$data);
 
 	  //var_dump($peop->obtener_estudios());
    }
@@ -111,7 +111,7 @@ class Personas extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['cedula'] = $cedula;
-	        $this->load->view('Agregar_pregrado',$data);
+	        $this->load->view('agregar_pregrado',$data);
 						//$this->load->view('Registrar');
 		}
 		else
@@ -150,7 +150,7 @@ class Personas extends CI_Controller {
 
    }elseif ($cedula != null && $opcion == null) {
 	$data['cedula'] = $cedula;
-	$this->load->view('Agregar_pregrado',$data);
+	$this->load->view('agregar_pregrado',$data);
     //  $value['numero_documento'] = $cedula;
     //   $peop = new Persona($value);
     //   $peop->obtener_datos();
@@ -171,7 +171,7 @@ class Personas extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['cedula'] = $cedula;
-	        $this->load->view('Agregar_posgrado',$data);
+	        $this->load->view('agregar_posgrado',$data);
 		}
 		else
 		{
@@ -194,7 +194,7 @@ class Personas extends CI_Controller {
 
    }elseif ($cedula != null && $opcion == null) {
 	$data['cedula'] = $cedula;
-	$this->load->view('Agregar_posgrado',$data);
+	$this->load->view('agregar_posgrado',$data);
  }
 }
 

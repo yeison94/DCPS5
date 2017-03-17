@@ -11,7 +11,7 @@ class Welcome extends CI_Controller {
  }
 
  public function index(){
-	 $this->load->view('Menu');
+	 $this->load->view('menu');
  }
 
 }
