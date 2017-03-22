@@ -66,6 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					echo "<td>" . $pregrado->institucion . "</td>";
 					echo "<td>" . $pregrado->pais . "</td>";
 					echo "<td>" . $pregrado->fecha_graduacion . "</td>";
+					echo '<td> <a href="'	 . site_url("estudios/modificar/") . $pregrado->id . '">Modificar</a> </td>';
 				echo "</tr>";
 				}?>
 		
@@ -90,6 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					echo "<td>" . $posgrado->institucion . "</td>";					
 					echo "<td>" . $posgrado->pais . "</td>";
 					echo "<td>" . $posgrado->fecha_graduacion . "</td>";
+					echo '<td> <a href="'	 . site_url("estudios/modificar/") . $posgrado->id . '">Modificar</a> </td>';
 				echo "</tr>";
 				}?>
 		

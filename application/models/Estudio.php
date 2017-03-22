@@ -72,6 +72,16 @@ class Estudio extends CI_Model {
 		}
 	}
 
+	public function actualizar() {
+		$data = [
+			'id' => $this->id,
+			'institucion' => $this->institucion,
+			'pais' => $this->pais,
+			'fecha_graduacion' => $this->fecha_graduacion,
+		];
+		return $this->db->update('estudio', $data, array('id' => $this->id));
+	}
+
 	public function obtener_estudios_por_persona($persona) {
 		$this->load->model('Pregrado');
 		$this->load->model('Posgrado');
@@ -104,6 +114,12 @@ class Estudio extends CI_Model {
         $estudios = ['pregrados'=>$pregrados,'posgrados'=>$posgrados];
 
 		return $estudios;
+	}
+
+	public function obtener_estudio_por_id($id) {
+
+        $query = $this->db->get_where('estudio', array('id' => $id));
+        return $query->row_array();
 	}
 
 }
