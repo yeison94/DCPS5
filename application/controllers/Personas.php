@@ -89,12 +89,8 @@ class Personas extends CI_Controller {
       $peop->obtener_datos();  
 	  $data['persona'] = $peop;
 	  $estudios = $peop->obtener_estudios();
-	  var_dump($estudios);
 	  $data['estudios'] =$estudios;
-	  //var_dump($datos);
 	  $this->load->view('listar_detalle',$data);
-
-	  //var_dump($peop->obtener_estudios());
    }
  }
 
@@ -264,9 +260,5 @@ public function modificar($numero_documento = null, $modificacion = null){
 	else {
 		redirect('/personas/listar_personas');
 	 }
-
-
  }
-
-
 }

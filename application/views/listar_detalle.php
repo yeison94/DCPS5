@@ -32,7 +32,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<th>EMAIL</th>
 			<th>TELEFONO</th>
 			<th>NACIONALIDAD</th>
-			<th>ESTUDIOS</th>
 		</tr>
 
 		<tr>
@@ -47,40 +46,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td><?= $persona->email?></td>
 			<td><?= $persona->telefono?></td>
 			<td><?= $persona->nacionalidad?></td>
-			<td>
-				<table>
-					<tr>
-					<th>PREGRADO</th>
-					<th>POSGRADO</th>
-					</tr>
-					<tr>
-						<td><?php  
-
-							//var_dump ($estudios['pregrados']);
-
-						foreach ($estudios as $estudio) {
-
-								echo $estudio->profesion;
-								echo $estudio->institucion;
-						
-							}?>
-						</td>
-
-						<td><?php  
-						foreach ($estudios['posgrados'] as $estudio) {
-							settype($estudio, 'array');
-							echo "<ul>";
-							foreach ($estudio as $key => $value) {
-								if($key == "area"){
-									echo"<li>$value</li>";
-								}
-							}
-							echo "</ul>";}?>
-						</td>
-					</tr>
-				</table>
-			</td>
 		</tr>
+	</table> </br>
+
+	<table>
+		<tr>
+		<th>PREGRADO</th>
+		</tr>
+		<th>Profesión</th>					
+		<th>Institución</th>
+		<th>País</th>
+		<th>Fecha Graduación</th>
+		
+			<?php  
+
+			foreach ($estudios["pregrados"] as $pregrado) {
+				echo "<tr>";
+					echo "<td>" . $pregrado->profesion . "</td>";
+					echo "<td>" . $pregrado->institucion . "</td>";
+					echo "<td>" . $pregrado->pais . "</td>";
+					echo "<td>" . $pregrado->fecha_graduacion . "</td>";
+				echo "</tr>";
+				}?>
+		
+	</table> </br>
+
+	<table>
+		<tr>
+		<th>POSGRADO</th>
+		</tr>
+		<th>Area</th>
+		<th>Nivel</th>
+		<th>Institución</th>
+		<th>País</th>
+		<th>Fecha Graduación</th>
+		
+			<?php  
+
+			foreach ($estudios["posgrados"] as $posgrado) {
+				echo "<tr>";
+					echo "<td>" . $posgrado->area . "</td>";
+					echo "<td>" . $posgrado->nivel . "</td>";
+					echo "<td>" . $posgrado->institucion . "</td>";					
+					echo "<td>" . $posgrado->pais . "</td>";
+					echo "<td>" . $posgrado->fecha_graduacion . "</td>";
+				echo "</tr>";
+				}?>
+		
 	</table>
   </body>
 </html>

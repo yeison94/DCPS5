@@ -70,13 +70,11 @@ class Estudio extends CI_Model {
 		} else {
 			return FALSE;
 		}
-
 	}
 
 	public function obtener_estudios_por_persona($persona) {
 		$this->load->model('Pregrado');
 		$this->load->model('Posgrado');
-
 
 		$pregrados = [];
 		$posgrados = [];
@@ -86,27 +84,24 @@ class Estudio extends CI_Model {
 			->join('pregrado', 'estudio.id = pregrado.estudio')
 			->where('persona', $persona->numero_documento);
 
-		$pregrados = $this->db->get()->result();
+		$pregrados_result = $this->db->get()->result();
 
-		foreach ($pregrados as $pregrado) {
-		//	array_push($pregrados,new Pregrado($pregrado));
-			$estudios[] = new Pregrado($pregrado);
+		foreach ($pregrados_result as $pregrado) {
+			$pregrados[] = new Pregrado($pregrado);
 			
 		}
-		// var_dump($estudios);
 			
 		$this->db->from('estudio')
 			->join('posgrado', 'estudio.id = posgrado.estudio')
 			->where('persona', $persona->numero_documento);
 
-		$posgrados = $this->db->get()->result();
+		$posgrados_result = $this->db->get()->result();
 
-		foreach ($posgrados as $posgrado) {
-			array_push($posgrados,new Posgrado($posgrado));
-			//$estudios = new Posgrado($posgrado);
+		foreach ($posgrados_result as $posgrado) {
+			$posgrados[] = new Posgrado($posgrado);
+			
 		}
-        //$estudios = ['pregrados'=>$pregrados,'posgrados'=>$posgrados];
-		//array_push($estudios,$pregrados,$posgrados);
+        $estudios = ['pregrados'=>$pregrados,'posgrados'=>$posgrados];
 
 		return $estudios;
 	}
