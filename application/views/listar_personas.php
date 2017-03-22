@@ -6,6 +6,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <head>
     <meta charset="utf-8">
     <title></title>
+
+  <script type="text/javascript">
+      function confirma(){
+        if (confirm("¿Está seguro que quiere eliminar este registro?"))
+        {}
+        else { 
+          return false
+        }
+      }
+    </script>
+
   </head>
   <body>
       <?= form_open("Welcome/opciones")?>
@@ -38,6 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <button type="button" name="button">Añadir posgrado</button></a>
               <a href="<?php echo site_url("personas/modificar/").$nueva->numero_documento?>">
               <button type="button" name="button">Modificar</button></a>
+              <a href="<?php echo site_url("personas/eliminar/").$nueva->numero_documento.'/true'?>">
+              <button type="button" name="button" onClick="return confirma()">Eliminar</button></a>
             </td>
           <tr>
         <?php  } ?>

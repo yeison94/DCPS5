@@ -261,4 +261,21 @@ public function modificar($numero_documento = null, $modificacion = null){
 		redirect('/personas/listar_personas');
 	 }
  }
+
+ public function eliminar($numero_documento = null, $modificacion = null){
+	 $this->load->model('Persona');
+
+	if($numero_documento != null) {
+
+	 $this->load->model('Persona');
+	
+	 		$value['numero_documento'] = $numero_documento;
+			$people = new Persona($value);
+			$people->eliminar();
+			redirect('/personas/listar_personas');
+ 	}
+	else {
+		redirect('/personas/listar_personas');
+	 }
+ }
 }

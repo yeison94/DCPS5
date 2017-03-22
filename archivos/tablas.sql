@@ -21,14 +21,14 @@ CREATE TABLE estudio (
 	pais             VARCHAR(50)  NOT NULL,
 	fecha_graduacion DATE         NOT NULL,
 	PRIMARY KEY (id),
-	CONSTRAINT estudio_persona FOREIGN KEY (persona) REFERENCES persona (numero_documento)
+	CONSTRAINT estudio_persona FOREIGN KEY (persona) REFERENCES persona (numero_documento) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE pregrado (
 	estudio   INT UNSIGNED NOT NULL,
 	profesion VARCHAR(100) NOT NULL,
 	PRIMARY KEY (estudio),
-	CONSTRAINT padre_pregrado FOREIGN KEY (estudio) REFERENCES estudio (id)
+	CONSTRAINT padre_pregrado FOREIGN KEY (estudio) REFERENCES estudio (id) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE tarjeta_profesional (
@@ -44,7 +44,7 @@ CREATE TABLE posgrado (
 	area    VARCHAR(100) NOT NULL,
 	nivel   VARCHAR(15)  NOT NULL,
 	PRIMARY KEY (estudio),
-	CONSTRAINT padre_posgrado FOREIGN KEY (estudio) REFERENCES estudio (id),
+	CONSTRAINT padre_posgrado FOREIGN KEY (estudio) REFERENCES estudio (id) ON DELETE CASCADE,
 	CONSTRAINT tipo_posgrado_valido CHECK
-		(area IN ('Especialización', 'Maestría', 'Doctorado', 'Posdoctorado'))
+		(area IN ('Especialización', 'Maestría', 'Doctorado', 'Posdoctorado')) 
 ) ENGINE = InnoDB;

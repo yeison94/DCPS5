@@ -154,6 +154,11 @@ class Persona extends CI_Model {
 		return $this->db->update('persona', $data, array('numero_documento' => $this->numero_documento));
 	}
 
+	public function eliminar() {
+
+		return $this->db->delete('persona', array('numero_documento' => $this->numero_documento));
+	}
+
 	public function obtener_datos() {
 		$query = $this->db->get_where('persona', ['numero_documento' => $this->numero_documento]);
 		$result = $query->result();
